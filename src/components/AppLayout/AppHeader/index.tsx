@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import AppFooter from '../AppFooter';
 import CarouSel from '../CarouSel';
 import IntroDuce from '../IntroDuce';
 
 const AppHeader: React.FC = ({ children }) => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  });
   return (
     <>
-      <Container>
-        <LeftContainer>
+      <HeaderContainer isTop={scrollPosition < 100 ? true : false}>
+        <LeftContainer isTop={scrollPosition < 100 ? true : false}>
           <a href={'/'}>
             <svg width="92" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -36,7 +43,7 @@ const AppHeader: React.FC = ({ children }) => {
             <a href="">탐색하기</a>
           </div>
         </LeftContainer>
-        <RightContainer>
+        <RightContainer isTop={scrollPosition < 100 ? true : false}>
           <div className="first">
             <Input type="text" placeholder="브랜드나 상품명으로 찾아보세요" />
             <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +57,7 @@ const AppHeader: React.FC = ({ children }) => {
             <button>로그인</button>
           </div>
         </RightContainer>
-      </Container>
+      </HeaderContainer>
       <VideoContainer>
         <Video autoPlay loop muted playsInline>
           <source type="video/mp4" src="https://prap-assets.s3.ap-northeast-2.amazonaws.com/baner+01.mp4" />
@@ -187,8 +194,8 @@ const AppHeader: React.FC = ({ children }) => {
         </ChoiceContainer>
       </VideoContainer>
       <CarouSel />
-      <IntroDuce />
       <Main>{children}</Main>
+      <IntroDuce />
       <AppFooter />
     </>
   );
@@ -196,16 +203,21 @@ const AppHeader: React.FC = ({ children }) => {
 
 export default AppHeader;
 
-const Container = styled.div`
+const HeaderContainer = styled.div<{ isTop: boolean }>`
   position: fixed;
   width: 100%;
   top: 0px;
   z-index: 4;
   height: 72px;
-  transition: background-color 0.15s ease 0s;
-  color: rgb(254, 254, 254);
-  background-color: inherit !important;
-  border: none !important;
+
+  transition: ${(props) => (props.isTop ? 'background-color 0.15s ease 0s' : null)};
+  color: ${(props) => (props.isTop ? 'rgb(254, 254, 254)' : null)};
+  background-color: ${(props) => (props.isTop ? 'inherit !important' : null)};
+  border: ${(props) => (props.isTop ? 'none !important' : null)};
+
+  border-bottom: ${(props) => (props.isTop ? null : '1px solid rgb(239, 240, 243)')};
+  background-color: ${(props) => (props.isTop ? null : 'rgb(254, 254, 254)')};
+  transition: ${(props) => (props.isTop ? null : 'background-color 0.15s ease 0s')};
 
   display: flex;
   padding: 0px 0px 0px 30px;
@@ -218,10 +230,12 @@ const Container = styled.div`
     max-width: 1440px;
     margin: 0px calc((100% - 1440px) / 2);
   }
+  a {
+  }
 
   display: flex;
 `;
-const LeftContainer = styled.div`
+const LeftContainer = styled.div<{ isTop: boolean }>`
   display: flex;
   gap: 36px;
   height: 72px;
@@ -242,12 +256,12 @@ const LeftContainer = styled.div`
     width: 72px;
     text-align: center;
     cursor: pointer;
-    color: rgb(254, 254, 254);
+    color: ${(props) => (props.isTop ? 'rgb(254, 254, 254)' : '#212223')};
     background-color: inherit !important;
     border: none !important;
   }
 `;
-const RightContainer = styled.div`
+const RightContainer = styled.div<{ isTop: boolean }>`
   display: flex;
   gap: 58px;
   -webkit-box-align: center;
@@ -263,7 +277,7 @@ const RightContainer = styled.div`
   }
   .last {
     button {
-      color: rgb(254, 254, 254);
+      color: ${(props) => (props.isTop ? 'rgb(254, 254, 254)' : 'rgb(204, 205, 208)')};
       background-color: inherit;
       border: none;
       cursor: pointer;
