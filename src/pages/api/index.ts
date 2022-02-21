@@ -8,4 +8,8 @@ export const API = {
   all: () => api.get('all'),
   nft: () => api.get('nft'),
   shooes: () => api.get('shooes'),
+  piece: () => api.get('piece'),
+  p2p: () => api.get('p2p'),
+  startup: () => api.get('startup'),
+  invest: () => api.get('invest'),
 };

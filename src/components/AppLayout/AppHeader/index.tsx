@@ -14,8 +14,8 @@ const AppHeader: React.FC = ({ children }) => {
   });
   return (
     <>
-      <HeaderContainer isTop={scrollPosition < 100 ? true : false}>
-        <LeftContainer isTop={scrollPosition < 100 ? true : false}>
+      <HeaderContainer isTop={scrollPosition < 200 ? true : false}>
+        <LeftContainer isTop={scrollPosition < 200 ? true : false}>
           <a href={'/'}>
             <svg width="92" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -209,7 +209,7 @@ const HeaderContainer = styled.div<{ isTop: boolean }>`
   top: 0px;
   z-index: 4;
   height: 72px;
-
+  padding: 0 120px;
   transition: ${(props) => (props.isTop ? 'background-color 0.15s ease 0s' : null)};
   color: ${(props) => (props.isTop ? 'rgb(254, 254, 254)' : null)};
   background-color: ${(props) => (props.isTop ? 'inherit !important' : null)};
@@ -220,20 +220,14 @@ const HeaderContainer = styled.div<{ isTop: boolean }>`
   transition: ${(props) => (props.isTop ? null : 'background-color 0.15s ease 0s')};
 
   display: flex;
-  padding: 0px 0px 0px 30px;
   -webkit-box-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
   @media screen and (min-width: 1441px) {
-    padding: 0px 0px 0px 120px;
     max-width: 1440px;
-    margin: 0px calc((100% - 1440px) / 2);
+    padding: 0px calc((100% - 1440px) / 2);
   }
-  a {
-  }
-
-  display: flex;
 `;
 const LeftContainer = styled.div<{ isTop: boolean }>`
   display: flex;
@@ -266,7 +260,7 @@ const RightContainer = styled.div<{ isTop: boolean }>`
   gap: 58px;
   -webkit-box-align: center;
   align-items: center;
-  margin-right: 120px;
+  margin-right: 60px;
   .first {
     border-bottom: 1px solid rgb(204, 205, 208);
     display: flex;
@@ -305,7 +299,7 @@ const ChoiceContainer = styled.div`
     padding: 0px 120px;
   }
   & > div {
-    left: calc(50% - 600px);
+    left: calc(50% - 660px);
     max-width: 1200px;
     width: calc(100% - 240px);
     position: absolute;

@@ -74,6 +74,7 @@ const IntroDuce = () => {
 export default IntroDuce;
 
 const Container = styled.div`
+  margin-top: 30px;
   text-align: center;
   background-color: rgb(243, 244, 245);
   padding: 72px 138px 0px;
