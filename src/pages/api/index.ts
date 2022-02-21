@@ -12,4 +12,5 @@ export const API = {
   p2p: () => api.get('p2p'),
   startup: () => api.get('startup'),
   invest: () => api.get('invest'),
+  slide: () => api.get('slide'),
 };
