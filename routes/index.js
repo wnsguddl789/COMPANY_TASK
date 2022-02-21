@@ -74,6 +74,7 @@ const NFT = [
     img_src: 'https://ipfs.pixura.io/ipfs/QmY9kfC3qqmnN97WHfZkC9tmMXNDoCJN3UfkVXkhkj8PVc/MarcThumbnail1.jpg',
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
+    tag: [],
   },
   {
     id: 1,
@@ -81,6 +82,7 @@ const NFT = [
     img_src: 'https://mkpcdn.com/500x/4b17aa47e11d0bd2e244d81bff3ce5a9_473803.jpg',
     content: 'Never-Ending Search',
     isInvest: false,
+    tag: [],
   },
   {
     id: 1,
@@ -88,6 +90,7 @@ const NFT = [
     img_src: 'https://ipfs.pixura.io/ipfs/QmY9kfC3qqmnN97WHfZkC9tmMXNDoCJN3UfkVXkhkj8PVc/MarcThumbnail1.jpg',
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
+    tag: [],
   },
 ];
 
