@@ -8,7 +8,7 @@ const ALL = [
     tag: ['조각투자'],
     value: '17억',
     isOpen: false,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     OpenDate: '2월 18일',
     content: 'Angel',
@@ -21,7 +21,7 @@ const ALL = [
     tag: ['스니커즈 리셀'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: false,
     stock: [
       {
@@ -47,7 +47,7 @@ const ALL = [
     tag: ['비상장주식'],
     value: '17억',
     isOpen: true,
-    isDisCount: true,
+    isUp: true,
     isInvest: false,
     stock: [
       {
@@ -74,6 +74,7 @@ const NFT = [
     img_src: 'https://ipfs.pixura.io/ipfs/QmY9kfC3qqmnN97WHfZkC9tmMXNDoCJN3UfkVXkhkj8PVc/MarcThumbnail1.jpg',
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
+    isOpen: true,
     tag: [],
   },
   {
@@ -82,6 +83,7 @@ const NFT = [
     img_src: 'https://mkpcdn.com/500x/4b17aa47e11d0bd2e244d81bff3ce5a9_473803.jpg',
     content: 'Never-Ending Search',
     isInvest: false,
+    isOpen: true,
     tag: [],
   },
   {
@@ -90,6 +92,7 @@ const NFT = [
     img_src: 'https://ipfs.pixura.io/ipfs/QmY9kfC3qqmnN97WHfZkC9tmMXNDoCJN3UfkVXkhkj8PVc/MarcThumbnail1.jpg',
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
+    isOpen: true,
     tag: [],
   },
 ];
@@ -103,7 +106,7 @@ const SHOOES = [
     tag: ['스니커즈 리셀'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: false,
     stock: [
       {
@@ -129,7 +132,7 @@ const SHOOES = [
     tag: ['스니커즈 리셀'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: false,
     stock: [
       {
@@ -155,7 +158,7 @@ const SHOOES = [
     tag: ['스니커즈 리셀'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: false,
     stock: [
       {
@@ -183,7 +186,7 @@ const PIECE = [
     tag: ['조각투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     stock: [
       {
@@ -208,7 +211,7 @@ const PIECE = [
     tag: ['조각투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     stock: [
       {
@@ -233,7 +236,7 @@ const PIECE = [
     tag: ['조각투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     investPrice: 437385000,
     goalPrice: 1254500000,
@@ -249,7 +252,7 @@ const P2P = [
     tag: ['P2P 투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     investPrice: 2355000,
     goalPrice: 2600000,
@@ -264,7 +267,7 @@ const P2P = [
     tag: ['P2P 투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     investPrice: 5195000,
     goalPrice: 5200000,
@@ -279,7 +282,7 @@ const P2P = [
     tag: ['P2P 투자'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     investPrice: 123120000,
     goalPrice: 130000000,
@@ -297,7 +300,7 @@ const STARTUP = [
     tag: ['스타트업 펀딩', '2일 남음'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     comp_name: '주식회사 현대에이아이티',
     investPrice: 54960000,
@@ -313,7 +316,7 @@ const STARTUP = [
     tag: ['스타트업 펀딩', '11일 남음'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     comp_name: '레츠프레소',
     investPrice: 160600250,
@@ -329,7 +332,7 @@ const STARTUP = [
     tag: ['스타트업 펀딩', '2일 남음'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
     isInvest: true,
     comp_name: '주식회사 현대에이아이티',
     investPrice: 54960000,
@@ -349,13 +352,25 @@ const INVEST = [
     tag: ['비상장주식'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: true,
+    upAmount: 10,
     isInvest: true,
-    investPrice: 2355000,
-    goalPrice: 2600000,
-    interestRate: 15.49,
-    month: 12,
-    content: '대환대출',
+    comp_value: '5억',
+    stock: [
+      {
+        label: 5000,
+        value: 165,
+      },
+      {
+        label: 1000,
+        value: 170,
+      },
+      {
+        label: 10000,
+        value: 170,
+      },
+    ],
+    content: 'OCI스페셜티',
   },
   {
     id: 1,
@@ -365,13 +380,25 @@ const INVEST = [
     tag: ['비상장주식'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
+    upAmount: null,
     isInvest: true,
-    investPrice: 5195000,
-    goalPrice: 5200000,
-    interestRate: 14.99,
-    month: 36,
-    content: '개인자금',
+    comp_value: '17조 9,584억',
+    stock: [
+      {
+        label: 10,
+        value: 110000,
+      },
+      {
+        label: 52,
+        value: 111400,
+      },
+      {
+        label: 198,
+        value: 111400,
+      },
+    ],
+    content: '비바리퍼블리카',
   },
   {
     id: 1,
@@ -381,13 +408,25 @@ const INVEST = [
     tag: ['비상장주식'],
     value: null,
     isOpen: true,
-    isDisCount: false,
+    isUp: false,
+    upAmount: null,
     isInvest: true,
-    investPrice: 123120000,
-    goalPrice: 130000000,
-    interestRate: 15.5,
-    month: 9,
-    content: '서울 디지털 산업단지 인근 초역세권 오피스텔 신축 3호 32차',
+    comp_value: '18조 232억',
+    stock: [
+      {
+        label: 50,
+        value: 110000,
+      },
+      {
+        label: 39,
+        value: 110000,
+      },
+      {
+        label: 30,
+        value: 110000,
+      },
+    ],
+    content: '비바리퍼블리카',
   },
 ];
 /**
