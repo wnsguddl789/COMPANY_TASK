@@ -183,25 +183,13 @@ const PIECE = [
     id: 0,
     comp_src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/tessaLogo.png',
     img_src: 'https://dbm9jhyrx0h6k.cloudfront.net/service/1643001563143-8c31e5b6-3abd-4860-a6f6-db345d0c951d.png',
-    tag: ['조각투자'],
+    tag: ['조각투자', '57일 남음'],
     value: null,
     isOpen: true,
     isUp: false,
     isInvest: true,
-    stock: [
-      {
-        label: 310,
-        value: 264000,
-      },
-      {
-        label: 295,
-        value: 267000,
-      },
-      {
-        label: 305,
-        value: 259000,
-      },
-    ],
+    investPrice: 437385000,
+    goalPrice: 1254500000,
     content: 'Angel',
   },
   {
@@ -210,30 +198,18 @@ const PIECE = [
     img_src: 'https://treasurer-source.s3.ap-northeast-2.amazonaws.com/trade-item-image/RLX0035/1.png',
     tag: ['조각투자'],
     value: null,
-    isOpen: true,
+    isOpen: false,
+    OpenDate: '3월 2일',
     isUp: false,
     isInvest: true,
-    stock: [
-      {
-        label: 310,
-        value: 264000,
-      },
-      {
-        label: 305,
-        value: 266000,
-      },
-      {
-        label: 260,
-        value: 268000,
-      },
-    ],
+    stock: null,
     content: "Rolex Explorer II 226570 'Polar'",
   },
   {
     id: 1,
     comp_src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/tessaLogo.png',
     img_src: 'https://dbm9jhyrx0h6k.cloudfront.net/service/1643878417703-ca9bc859-9304-4814-afa3-229fb17cb59a.png',
-    tag: ['조각투자'],
+    tag: ['조각투자', '57일 남음'],
     value: null,
     isOpen: true,
     isUp: false,
