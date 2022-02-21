@@ -75,7 +75,7 @@ const NFT = [
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
     isOpen: true,
-    tag: [],
+    tag: ['NFT'],
   },
   {
     id: 1,
@@ -84,7 +84,7 @@ const NFT = [
     content: 'Never-Ending Search',
     isInvest: false,
     isOpen: true,
-    tag: [],
+    tag: ['NFT'],
   },
   {
     id: 1,
@@ -93,7 +93,7 @@ const NFT = [
     content: 'Marc-O-Matic - The Garden of Worldly Respite',
     isInvest: false,
     isOpen: true,
-    tag: [],
+    tag: ['NFT'],
   },
 ];
 
