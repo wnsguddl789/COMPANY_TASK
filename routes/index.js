@@ -290,8 +290,8 @@ const STARTUP = [
   },
   {
     id: 1,
-    comp_src: 'https://cdn.wadiz.kr/ft/images/green001/2022/0128/20220128165657076_6085.jpg',
-    img_src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/wadizLogo.png',
+    comp_src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/wadizLogo.png',
+    img_src: 'https://cdn.wadiz.kr/ft/images/green001/2022/0128/20220128165657076_6085.jpg',
     tag: ['스타트업 펀딩', '11일 남음'],
     value: null,
     isOpen: true,
