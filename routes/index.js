@@ -408,6 +408,27 @@ const INVEST = [
     content: '비바리퍼블리카',
   },
 ];
+
+const SLIDE = [
+  {
+    id: 0,
+    mention: '3일간 새로 등록된 상품',
+    number: 59,
+    src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/calendar.png',
+  },
+  {
+    id: 1,
+    mention: '3일간 마감된 투자 상품',
+    number: 27,
+    src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/rocket.png',
+  },
+  {
+    id: 2,
+    mention: '프랩에서 투자상품을 조회한 횟수',
+    number: 788800,
+    src: 'https://msr-assets.s3.ap-northeast-2.amazonaws.com/letter.png',
+  },
+];
 /**
  * @path {GET} http://localhost:3000/api/all
  * @description 요청 데이터 값이 없고 반환 값이 있는 GET Method
@@ -470,4 +491,14 @@ router.get('/api/invest', (req, res) => {
   //유저 정보 반환
   res.json({ ok: true, data: INVEST });
 });
+
+/**
+ * @path {GET} http://localhost:3000/api/slide
+ * @description 요청 데이터 값이 없고 반환 값이 있는 GET Method
+ */
+router.get('/api/slide', (req, res) => {
+  //유저 정보 반환
+  res.json({ ok: true, data: SLIDE });
+});
+
 module.exports = router;
