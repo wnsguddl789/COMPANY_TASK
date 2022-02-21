@@ -333,7 +333,7 @@ const INVEST = [
     isOpen: true,
     isUp: true,
     upAmount: 10,
-    isInvest: true,
+    isInvest: false,
     comp_value: '5억',
     stock: [
       {
@@ -361,7 +361,7 @@ const INVEST = [
     isOpen: true,
     isUp: false,
     upAmount: null,
-    isInvest: true,
+    isInvest: false,
     comp_value: '17조 9,584억',
     stock: [
       {
@@ -389,7 +389,7 @@ const INVEST = [
     isOpen: true,
     isUp: false,
     upAmount: null,
-    isInvest: true,
+    isInvest: false,
     comp_value: '18조 232억',
     stock: [
       {
