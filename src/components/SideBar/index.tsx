@@ -29,7 +29,7 @@ const SideBar = () => {
       createdAt: moment().format('LT'),
     };
     setChatRoomList([...chatRoomList, newRoom]);
-    dispatch(AddRoom(newId));
+    dispatch(AddRoom(String(newId)));
   };
   useEffect(() => {
     if (chatRoomList.length === 0) router.replace('/');

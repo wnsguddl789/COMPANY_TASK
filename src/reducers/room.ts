@@ -4,11 +4,7 @@ export const initialState = {
 };
 
 interface ROOM_PROPS {
-  id: number;
-}
-interface Chat_Props {
-  createdAt: String;
-  content: String;
+  length: number;
 }
 
 export const AddRoom = (data: ROOM_PROPS) => {
@@ -19,21 +15,9 @@ export const AddRoom = (data: ROOM_PROPS) => {
   };
 };
 
-export const ChatLog = (data: Chat_Props) => {
-  return {
-    type: 'CHAT_LOG',
-    data,
-  };
-};
-
 const reducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case 'ADD_ROOM':
-      return {
-        ...state,
-        roomId: action.data,
-      };
-    case 'CHAT_LOG':
       return {
         ...state,
         roomId: action.data,
