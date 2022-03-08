@@ -20,18 +20,18 @@ const SideBar = () => {
   const [visible, setVisible] = useState(false);
 
   const room = useSelector((state: RootState) => state.room);
-  useEffect(() => {
-    if (window.sessionStorage.getItem('room')) {
-      const arr = JSON.parse(window.sessionStorage.getItem('room'));
-      arr.map((list) => {
-        // console.log(newId, list.id, newId === list.id);
-        // newId === list.id ? setNewId(newId + 1) : null;
-        // console.log(newId, list.id, newId === list.id);
-      });
-      // if (arr && arr.length !== 0) setChatRoomList(arr);
-      // console.log(arr);
-    }
-  }, [newId]);
+  // useEffect(() => {
+  //   if (window.sessionStorage.getItem('room')) {
+  //     const arr = JSON.parse(window.sessionStorage.getItem('room'));
+  //     arr.map((list) => {
+  //       // console.log(newId, list.id, newId === list.id);
+  //       // newId === list.id ? setNewId(newId + 1) : null;
+  //       // console.log(newId, list.id, newId === list.id);
+  //     });
+  //     // if (arr && arr.length !== 0) setChatRoomList(arr);
+  //     // console.log(arr);
+  //   }
+  // }, [newId]);
   const router = useRouter();
   const dispatch = useDispatch();
 
