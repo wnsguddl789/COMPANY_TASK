@@ -140,6 +140,7 @@ const SmallSideContainer = styled.div`
   left: 10px;
 `;
 const MenuOpenBtn = styled(MenuIcon)`
+  position: absolute;
   :hover {
     cursor: pointer;
   }

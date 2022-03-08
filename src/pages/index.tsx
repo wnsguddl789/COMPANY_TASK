@@ -19,5 +19,7 @@ const RoomIdText = styled.p`
   line-height: 42px;
   color: #515151;
   position: relative;
+  top: -10px;
+  left: 40px;
   padding-bottom: 10px;
 `;

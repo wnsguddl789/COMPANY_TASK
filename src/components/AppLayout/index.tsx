@@ -17,7 +17,12 @@ const AppLayout: React.FC = ({ children }) => {
 export default AppLayout;
 
 const Container = styled.div`
-  padding: 60px;
+  @media (max-width: 899px) {
+    padding: 20px;
+  }
+  @media (min-width: 900px) {
+    padding: 60px;
+  }
   display: flex;
 `;
 
