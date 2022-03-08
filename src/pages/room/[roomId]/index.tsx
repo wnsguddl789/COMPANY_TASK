@@ -168,7 +168,13 @@ const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  height: calc(100vh - 360px);
+  @media (max-width: 899px) {
+    height: calc(100vh - 300px);
+  }
+  @media (min-width: 900px) {
+    height: calc(100vh - 360px);
+  }
+
   position: relative;
   width: auto;
   ::-webkit-scrollbar {

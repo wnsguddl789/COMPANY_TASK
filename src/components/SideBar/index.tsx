@@ -64,7 +64,7 @@ const SideBar = () => {
     <>
       <SideContainer>
         <Text onClick={() => router.replace('/')}>Chating List</Text>
-        <ChatList>
+        <ChatList isSmall={false}>
           {chatRoomList &&
             chatRoomList.length > 0 &&
             chatRoomList.map((item: RoomType, idx) => {
@@ -90,7 +90,7 @@ const SideBar = () => {
             <Text onClick={() => router.replace('/')}>Chating List</Text>
             <Text onClick={() => setVisible(!visible)}>x</Text>
           </SideHeader>
-          <ChatList>
+          <ChatList isSmall={true}>
             {chatRoomList &&
               chatRoomList.length > 0 &&
               chatRoomList.map((item: RoomType, idx) => {
@@ -172,12 +172,13 @@ const Text = styled.span`
   }
 `;
 
-const ChatList = styled.ul`
+const ChatList = styled.ul<{ isSmall: boolean }>`
   list-style: none;
   margin-top: 39px;
   overflow-y: scroll;
   padding: 0 10px;
-  height: calc(100vh - 360px);
+
+  height: ${(props) => (props.isSmall ? 'calc(100vh - 200px)' : 'calc(100vh - 360px)')};
   ::-webkit-scrollbar {
     display: none;
   }
