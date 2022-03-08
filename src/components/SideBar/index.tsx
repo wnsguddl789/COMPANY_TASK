@@ -55,7 +55,7 @@ const SideBar = () => {
     return roomLength;
   };
 
-  const func = (item) => {
+  const func = (item: RoomType) => {
     router.push(`/room/${item.id}`);
     setVisible(!visible);
   };
