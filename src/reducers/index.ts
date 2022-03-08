@@ -8,16 +8,27 @@ export interface State {
   tick: string;
 }
 
-const appReducer = combineReducers({ room });
+const appReducer = combineReducers({ room: room });
 
-const rootReducer = (state: RootState | undefined, action: AnyAction) => {
-  switch (action.type) {
-    case HYDRATE:
-      return action.payload;
+// const rootReducer = (state: RootState | undefined, action: AnyAction) => {
+//   switch (action.type) {
+//     case HYDRATE:
+//       return action.payload;
 
-    default: {
-      return appReducer(state, action);
+//     default: {
+//       return appReducer(state, action);
+//     }
+//   }
+// };
+const rootReducer = combineReducers({
+  index: (state = {}, action) => {
+    switch (action.type) {
+      case HYDRATE:
+        return action.payload;
+      default:
+        return state;
     }
-  }
-};
+  },
+  room,
+});
 export default rootReducer;

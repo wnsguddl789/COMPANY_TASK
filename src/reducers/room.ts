@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 export const initialState = {
-  roomId: null,
+  chatRoom: [],
 };
 
 interface ROOM_PROPS {
@@ -8,9 +8,16 @@ interface ROOM_PROPS {
 }
 
 export const AddRoom = (data: ROOM_PROPS) => {
-  // window.sessionStorage.setItem('roomLength', String(data.length));
+  if (data.length !== 0) window.sessionStorage.setItem('room', JSON.stringify(data));
   return {
     type: 'ADD_ROOM',
+    data,
+  };
+};
+
+export const AddChatLog = (data: any) => {
+  return {
+    type: 'ADD_CHATLOG',
     data,
   };
 };
@@ -20,7 +27,12 @@ const reducer = (state = initialState, action: AnyAction) => {
     case 'ADD_ROOM':
       return {
         ...state,
-        roomId: action.data,
+        room: action.data,
+      };
+    case 'ADD_CHATLOG':
+      return {
+        ...state,
+        chatRoom: action.data,
       };
     default:
       return state;

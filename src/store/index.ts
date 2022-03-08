@@ -5,9 +5,11 @@ import reducer from '../reducers/index';
 export interface State {
   tick: string;
 }
-const devMode = process.env.NODE_ENV === 'development';
+// const devMode = process.env.NODE_ENV === 'development';
 
-const configureStore = (context: Context) => createStore(reducer);
+function configureStore(context: Context) {
+  return createStore(reducer);
+}
 
 const wrapper = createWrapper(configureStore, { debug: true });
 

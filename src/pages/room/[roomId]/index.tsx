@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState, useRef } from 'react';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { AddChatLog } from '../../../reducers/room';
+
 import moment from 'moment';
 import 'moment/locale/ko';
 
@@ -17,9 +20,11 @@ interface ChatProps {
 }
 const Room = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [value, setValue] = useState('');
   const [chatData, setChatData] = useState<ChatProps[]>([]);
-  const [currentRouter, setCurrentRouter] = useState(router.query.roomId);
+  const [currentRouter] = useState(router.query.roomId);
+  const room = useSelector((state: RootState) => state.room);
   useEffect(() => {
     if (currentRouter !== router.query.roomId) {
       setChatData([]);
@@ -31,6 +36,7 @@ const Room = () => {
     if (e.key === 'Enter' && !e.shiftKey) {
       setChatData([...chatData, { time: moment().format('LT'), content: stringtoArray() }]);
       setValue('');
+      dispatch(AddChatLog([{ id: Number(currentRouter), data: [...chatData] }]));
       if (e.preventDefault) e.preventDefault(); // This should fix it
       return false; // Just a workaround for old browsers
     }
@@ -38,6 +44,7 @@ const Room = () => {
   const handleAddChat = () => {
     if (value.trim() === '') return;
     setChatData([...chatData, { time: moment().format('LT'), content: stringtoArray() }]);
+    dispatch(AddChatLog([{ id: Number(currentRouter), data: [...chatData] }]));
     setValue('');
   };
 
