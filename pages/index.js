@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react'
 import {
-	GlobalLayout,
 	TodoContainer,
 	TodoHeader,
 	TodoInput,
@@ -7,49 +7,77 @@ import {
 	TodoList,
 	TodoListItem,
 	TodoRemoveButton,
+	TodoCompleteButton,
 } from '../utils/styles'
+import Layout from '../component/Layout'
+import { toJS } from 'mobx'
 
-const DUMP_TODO_DATA = [
-	{
-		id: 0,
-		content: 'mobx 사용해보기',
-	},
-	{
-		id: 1,
-		content: 'appolo 사용해보기',
-	},
-	{
-		id: 2,
-		content: 'mvvm 사용해보기',
-	},
-	{
-		id: 3,
-		content: 'grapql 사용해보기',
-	},
-]
+import todoStore from '../stores/todo'
 
 export default function App() {
+	const [todoList, setTodoList] = useState([])
+	const [index, setIndex] = useState(0)
+
+	useEffect(() => {
+		if (todoList.length === 0) {
+			setTodoList(todoStore.todoList.notCompleteTodo)
+		}
+	}, [])
+	const addTodoListHandler = (e) => {
+		const value = e.target.value
+		if (e.keyCode === 13) {
+			if (!value) return
+			else {
+				todoStore.addTodo(index, value)
+				setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+				setIndex(index + 1)
+				e.target.value = ''
+			}
+		}
+	}
+
+	const romoveTodoListHandler = (idx) => {
+		todoStore.removeTodo(idx)
+		setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+	}
+	const completeTodoListHandler = (idx, value) => {
+		todoStore.completeTodo(idx, value)
+		setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+	}
 	return (
-		<GlobalLayout>
+		<Layout title="TODO">
 			<TodoContainer>
 				<TodoHeader>
-					<p>TODO LIST</p>
-					<TodoInput placeholder="input your todo.." />
+					<p>NOT COMPLETE TODO LIST</p>
+					<TodoInput
+						placeholder="input your todo.."
+						onKeyUp={(e) => addTodoListHandler(e)}
+					/>
 				</TodoHeader>
 				<TodoBody>
 					<TodoList>
-						{DUMP_TODO_DATA &&
-							DUMP_TODO_DATA.map((item) => {
-								return (
-									<TodoListItem>
-										<span key={item.id}>{item.content}</span>
-										<TodoRemoveButton>X</TodoRemoveButton>
-									</TodoListItem>
-								)
-							})}
+						{todoList.map((item, idx) => {
+							return (
+								<TodoListItem isComplete={false} key={idx}>
+									<span>{item.value}</span>
+									<div>
+										<TodoCompleteButton
+											onClick={() =>
+												completeTodoListHandler(item.id, item.value)
+											}>
+											V
+										</TodoCompleteButton>
+										<TodoRemoveButton
+											onClick={() => romoveTodoListHandler(item.id)}>
+											X
+										</TodoRemoveButton>
+									</div>
+								</TodoListItem>
+							)
+						})}
 					</TodoList>
 				</TodoBody>
 			</TodoContainer>
-		</GlobalLayout>
+		</Layout>
 	)
 }
