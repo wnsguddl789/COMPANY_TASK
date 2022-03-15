@@ -1,23 +1,31 @@
 {
-  "name": "jun-next",
-  "version": "1.0.0",
-  "description": "mvvm & Appollo & mobx 사용해보기 위한 데모 투두리스트",
-  "main": "index.js",
-  "author": "Jun",
-  "license": "MIT",
-  "scripts": {
-    "dev": "next dev"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "antd": "^4.19.2",
-    "next": "12.0.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "eslint": "8.7.0",
-    "eslint-config-next": "12.0.8"
-  }
+	"name": "jun-next",
+	"version": "1.0.0",
+	"description": "mvvm & Appollo & mobx 사용해보기 위한 데모 투두리스트",
+	"main": "index.js",
+	"author": "Jun",
+	"license": "MIT",
+	"scripts": {
+		"dev": "next dev"
+	},
+	"dependencies": {
+		"@babel/core": "^7.17.7",
+		"@babel/plugin-proposal-class-properties": "^7.16.7",
+		"@babel/plugin-proposal-decorators": "^7.17.2",
+		"@babel/plugin-proposal-private-methods": "^7.16.11",
+		"@babel/plugin-proposal-private-property-in-object": "^7.16.7",
+		"@emotion/react": "^11.8.2",
+		"@emotion/styled": "^11.8.1",
+		"fetch": "^1.1.0",
+		"mobx": "^6.4.2",
+		"mobx-react": "^7.3.0",
+		"next": "12.0.8",
+		"next-mobx-wrapper": "^0.4.0",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	},
+	"devDependencies": {
+		"eslint": "8.7.0",
+		"eslint-config-next": "12.0.8"
+	}
 }
