@@ -12,24 +12,23 @@ import {
 import Layout from '../component/Layout'
 import { toJS } from 'mobx'
 
-import todoStore from '../stores/todo'
-
-export default function App() {
+export default function App({ store }) {
 	const [todoList, setTodoList] = useState([])
 	const [index, setIndex] = useState(0)
 
 	useEffect(() => {
 		if (todoList.length === 0) {
-			setTodoList(todoStore.todoList.notCompleteTodo)
+			setTodoList(store.todoList.notCompleteTodo)
 		}
+		console.log(store)
 	}, [])
 	const addTodoListHandler = (e) => {
 		const value = e.target.value
 		if (e.keyCode === 13) {
 			if (!value) return
 			else {
-				todoStore.addTodo(index, value)
-				setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+				store.addTodo(index, value)
+				setTodoList(toJS(store.todoList.notCompleteTodo))
 				setIndex(index + 1)
 				e.target.value = ''
 			}
@@ -37,12 +36,12 @@ export default function App() {
 	}
 
 	const romoveTodoListHandler = (idx) => {
-		todoStore.removeTodo(idx)
-		setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+		store.removeTodo(idx)
+		setTodoList(toJS(store.todoList.notCompleteTodo))
 	}
 	const completeTodoListHandler = (idx, value) => {
-		todoStore.completeTodo(idx, value)
-		setTodoList(toJS(todoStore.todoList.notCompleteTodo))
+		store.completeTodo(idx, value)
+		setTodoList(toJS(store.todoList.notCompleteTodo))
 	}
 	return (
 		<Layout title="TODO">

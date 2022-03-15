@@ -1,13 +1,22 @@
-import { makeAutoObservable, toJS } from 'mobx'
+import { makeAutoObservable, observable, configure } from 'mobx'
+import { enableStaticRendering } from 'mobx-react'
+const isServer = typeof window === 'undefined'
 
-class Todo {
-	todoList = {
+configure({ enforceActions: 'observed' })
+enableStaticRendering(isServer)
+export default class Todo {
+	@observable todoList = {
 		notCompleteTodo: [],
 		completeTodo: [],
 	}
 
-	constructor() {
+	constructor(isServer, initialData = {}) {
 		makeAutoObservable(this)
+		if (initialData.stores) {
+			this.stores = { ...initialData.stores }
+		} else {
+			this.stores = {}
+		}
 	}
 
 	addTodo = (id, value) => {
@@ -23,7 +32,3 @@ class Todo {
 		this.removeTodo(id)
 	}
 }
-
-const todoStore = new Todo()
-
-export default todoStore

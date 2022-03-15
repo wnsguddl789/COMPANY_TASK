@@ -23,7 +23,7 @@ export const RouteContainer = styled.div`
 `
 
 export const TodoContainer = styled.div`
-	width: 500px;
+	width: 300px;
 	height: 80vh;
 	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.3);
 	border-radius: 10px;

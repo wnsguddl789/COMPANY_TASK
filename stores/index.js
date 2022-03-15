@@ -1,1 +1,1 @@
-export { getTodoStore } from './todo'
+export * from './todo'

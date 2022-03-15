@@ -1,18 +1,13 @@
 import '../public/css/reset.css'
+import { Provider, observer } from 'mobx-react'
+import Todo from '../stores/todo'
 
-import { configure } from 'mobx'
-import { Provider, observer, useStaticRendering } from 'mobx-react'
+const todoStore = new Todo()
 
-const isServer = typeof window === 'undefined'
-
-configure({ enforceActions: 'observed' })
-useStaticRendering(isServer)
-
-const NextApp = ({ Component, pageProps, store }) => {
-	// const store = useStore(pageProps)
+const NextApp = ({ Component, pageProps }) => {
 	return (
-		<Provider>
-			<Component {...pageProps} />
+		<Provider store={todoStore}>
+			<Component store={todoStore} {...pageProps} />
 		</Provider>
 	)
 }
