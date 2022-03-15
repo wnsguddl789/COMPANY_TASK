@@ -1,0 +1,23 @@
+{
+  "name": "jun-next",
+  "version": "1.0.0",
+  "description": "mvvm & Appollo & mobx 사용해보기 위한 데모 투두리스트",
+  "main": "index.js",
+  "author": "Jun",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "antd": "^4.19.2",
+    "next": "12.0.8",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.8"
+  }
+}
