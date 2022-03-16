@@ -1,15 +1,18 @@
 import '../public/css/reset.css'
-import { Provider, observer } from 'mobx-react'
-import Todo from '../stores/todo'
+import App from 'next/app'
+import { Provider } from 'mobx-react'
+import todo from '../stores/todo'
+export default class NextApp extends App {
+	constructor(props) {
+		super(props)
+	}
 
-const todoStore = new Todo()
-
-const NextApp = ({ Component, pageProps }) => {
-	return (
-		<Provider store={todoStore}>
-			<Component store={todoStore} {...pageProps} />
-		</Provider>
-	)
+	render() {
+		const { Component, pageProps } = this.props
+		return (
+			<Provider store={todo}>
+				<Component {...pageProps} />
+			</Provider>
+		)
+	}
 }
-
-export default observer(NextApp)

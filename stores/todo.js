@@ -1,10 +1,11 @@
-import { makeAutoObservable, observable, configure } from 'mobx'
+import { makeAutoObservable, action, observable, configure } from 'mobx'
 import { enableStaticRendering } from 'mobx-react'
+import { createContext } from 'react/cjs/react.production.min'
 const isServer = typeof window === 'undefined'
 
 configure({ enforceActions: 'observed' })
 enableStaticRendering(isServer)
-export default class Todo {
+class TodoStore {
 	@observable todoList = {
 		notCompleteTodo: [],
 		completeTodo: [],
@@ -19,16 +20,18 @@ export default class Todo {
 		}
 	}
 
-	addTodo = (id, value) => {
-		this.todoList.notCompleteTodo.push({ id, value })
+	@action addTodoAction = (id, value) => {
+		this.todoList.notCompleteTodo.push({ ...this.todoList.notCompleteTodo, id, value })
 	}
-	removeTodo = (id) => {
+	@action removeTodoAction = (id) => {
 		this.todoList.notCompleteTodo = this.todoList.notCompleteTodo.filter(
 			(value) => value.id !== id,
 		)
 	}
-	completeTodo = (id, value) => {
-		this.todoList.completeTodo.push({ id, value })
-		this.removeTodo(id)
+	@action completeTodoAction = (id, value) => {
+		this.todoList.completeTodo.push({ ...this.todoList.completeTodo, id, value })
+		this.removeTodoAction(id)
 	}
 }
+
+export default createContext(new TodoStore())

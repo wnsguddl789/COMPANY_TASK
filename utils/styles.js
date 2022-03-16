@@ -29,7 +29,6 @@ export const TodoContainer = styled.div`
 	border-radius: 10px;
 `
 export const TodoHeader = styled.div`
-	/* height: 40px; */
 	padding: 5px;
 	text-align: center;
 	p {
@@ -67,6 +66,7 @@ export const TodoListItem = styled.li`
 		overflow-x: scroll;
 		font-size: 14px;
 		color: rgba(0, 0, 0, 0.5);
+		overflow-x: hidden;
 	}
 	& > div > * {
 		margin-left: 10px;

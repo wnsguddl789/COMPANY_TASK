@@ -1,33 +1,40 @@
-import { useState, useEffect } from 'react'
+import * as React from 'react'
+import { observer, inject } from 'mobx-react'
+
 import { TodoContainer, TodoHeader, TodoBody, TodoList, TodoListItem } from '../utils/styles'
 import Layout from '../component/Layout'
-import { toJS } from 'mobx'
+import TodoStore from '../stores/todo'
 
-export default function Complete({ store }) {
-	const [todoList, setTodoList] = useState([])
-	useEffect(() => {
-		if (todoList.length === 0) {
-			setTodoList(toJS(store.todoList.completeTodo))
-		}
-	}, [])
-	return (
-		<Layout title="TODO">
-			<TodoContainer>
-				<TodoHeader>
-					<p>COMPLETE TODO LIST</p>
-				</TodoHeader>
-				<TodoBody>
-					<TodoList>
-						{todoList.map((item, idx) => {
-							return (
-								<TodoListItem isComplete={true} key={idx}>
-									<span>{item.value}</span>
-								</TodoListItem>
-							)
-						})}
-					</TodoList>
-				</TodoBody>
-			</TodoContainer>
-		</Layout>
-	)
+@inject('store')
+@observer
+export default class Complete extends React.Component {
+	static contextType = TodoStore
+	constructor(props) {
+		super(props)
+	}
+	render() {
+		const {
+			todoList: { completeTodo },
+		} = this.context
+		return (
+			<Layout title="COMPLETE-TODO">
+				<TodoContainer>
+					<TodoHeader>
+						<p>COMPLETE TODO LIST</p>
+					</TodoHeader>
+					<TodoBody>
+						<TodoList>
+							{completeTodo.map((item, idx) => {
+								return (
+									<TodoListItem isComplete={true} key={idx}>
+										<span>{item.value}</span>
+									</TodoListItem>
+								)
+							})}
+						</TodoList>
+					</TodoBody>
+				</TodoContainer>
+			</Layout>
+		)
+	}
 }
