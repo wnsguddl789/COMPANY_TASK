@@ -25,7 +25,7 @@ export default class TodoView extends React.Component {
 			completeTodo,
 			addTodoListHandler,
 			completeTodoListHandler,
-			romoveTodoListHandler,
+			removeTodoListHandler,
 		} = this.props
 
 		const visibile = isComplete ? 'none' : 'block'
@@ -57,7 +57,7 @@ export default class TodoView extends React.Component {
 												V
 											</TodoCompleteButton>
 											<TodoRemoveButton
-												onClick={() => romoveTodoListHandler(item.id)}>
+												onClick={() => removeTodoListHandler(item.id)}>
 												X
 											</TodoRemoveButton>
 										</div>
