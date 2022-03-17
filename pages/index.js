@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import TodoProvider from '../component/Todo/TodoProvider'
+import TodoConsumer from '../component/Todo/TodoConsumer'
 
 export default class Index extends React.Component {
 	constructor(props) {
@@ -8,6 +8,6 @@ export default class Index extends React.Component {
 	}
 
 	render() {
-		return <TodoProvider />
+		return <TodoConsumer />
 	}
 }

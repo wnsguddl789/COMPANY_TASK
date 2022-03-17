@@ -1,7 +1,7 @@
 import '../public/css/reset.css'
 import App from 'next/app'
 import { Provider } from 'mobx-react'
-import RootStore from '../src/models/RootStore'
+import RootStore from '../store/RootStore'
 
 const rootStore = new RootStore()
 

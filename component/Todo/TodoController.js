@@ -7,6 +7,7 @@ class TodoController extends React.Component {
 		super(props)
 		this.state = { index: 0 }
 	}
+
 	addTodoListHandler = (e) => {
 		const value = e.target.value
 		if (e.keyCode === 13) {
@@ -22,8 +23,7 @@ class TodoController extends React.Component {
 		this.props.viewModel.completeTodoAction(idx, value)
 	}
 
-	romoveTodoListHandler = (idx) => {
-		console.log('view: remove action')
+	removeTodoListHandler = (idx) => {
 		this.props.viewModel.removeTodoAction(idx)
 	}
 
@@ -38,7 +38,7 @@ class TodoController extends React.Component {
 				completeTodo={completeTodo}
 				addTodoListHandler={this.addTodoListHandler}
 				completeTodoListHandler={this.completeTodoListHandler}
-				romoveTodoListHandler={this.romoveTodoListHandler}
+				removeTodoListHandler={this.removeTodoListHandler}
 			/>
 		)
 	}

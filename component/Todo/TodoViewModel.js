@@ -1,4 +1,4 @@
-class TodoViewModel {
+export default class TodoViewModel {
 	constructor(todoStore) {
 		this.store = todoStore
 	}
@@ -14,11 +14,10 @@ class TodoViewModel {
 	addTodoAction(id, value) {
 		return this.store.addTodoAction(id, value)
 	}
-	completeTodoAction(id) {
-		return this.store.completeTodoAction(id)
+	completeTodoAction(id, value) {
+		return this.store.completeTodoAction(id, value)
 	}
 	removeTodoAction(id) {
 		return this.store.removeTodoAction(id)
 	}
 }
-export default TodoViewModel
