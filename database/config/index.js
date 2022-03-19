@@ -1,3 +1,6 @@
-export const DB_USER = 'wnsguddl789'
-export const DB_PASSWORD = 'azxs4125'
-export const DB_NAME = 'myFirstDatabase'
+import dotenv from 'dotenv'
+dotenv.config()
+
+export const DB_USER = process.env.DB_USER
+export const DB_PASSWORD = process.env.DB_PASSWORD
+export const DB_NAME = process.env.DB_NAME
