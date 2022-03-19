@@ -2,7 +2,6 @@ import { gql } from 'apollo-server'
 
 const typeDefs = gql`
 	type Todo {
-		id: Int!
 		value: String!
 		isComplete: Boolean!
 	}
@@ -16,8 +15,8 @@ const typeDefs = gql`
 		getDBTodoList: [DBTodo]!
 	}
 	type Mutation {
-		addTodo(id: Int, value: String!, isComplete: Boolean!): Todo
-		addDBTodo(id: String, value: String!, isComplete: Boolean!): DBTodo
+		addTodo(value: String!, isComplete: Boolean!): Todo
+		addDBTodo(value: String!, isComplete: Boolean!): DBTodo
 		removeTodo(id: Int!): String!
 		completeTodo(id: Int!, value: String!, isComplete: Boolean!): String!
 	}

@@ -12,27 +12,6 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		// async addTodo(_, { id, value, isComplete }) {
-		// 	const session = await startSession()
-		// 	try {
-		// 		session.startTransaction()
-		// 		const todo = new Todo({
-		// 			id,
-		// 			value,
-		// 			isComplete,
-		// 		})
-		// 		const result = await todo.save({ session })
-		// 		await session.commitTransaction()
-		// 		return result
-		// 	} catch (error) {
-		// 		await session.abortTransaction()
-		// 		console.log(error)
-		// 		throw error
-		// 	} finally {
-		// 		await session.endSession()
-		// 	}
-
-		// },
 		addTodo: (_, { id, value, isComplete }) => {
 			const newTodo = {
 				id,
@@ -42,13 +21,28 @@ const resolvers = {
 			todoList.push(newTodo)
 			return newTodo
 		},
-		addDBTodo: async (_, { id, value, isComplete }) => {
-			const newTodo = {
-				id,
-				value,
-				isComplete,
+		addDBTodo: async (_, { value, isComplete }) => {
+			const session = await startSession()
+			try {
+				const newTodo = new Todo({
+					value,
+					isComplete,
+				})
+				session.startTransaction()
+				newTodo.save(function (err) {
+					if (!err) console.log('success')
+					else console.log(err)
+				})
+				await session.commitTransaction()
+				// Todo.console.log(newTodo)
+			} catch (error) {
+				// console.log(error)
+				throw error
+			} finally {
+				await session.endSession()
 			}
-			Todo.push(newTodo)
+
+			// Todo.push(newTodo)
 		},
 		removeTodo: (_, {}) => {},
 		completeTodo: (_, {}) => {},
@@ -59,5 +53,5 @@ const resolvers = {
 		},
 	},
 }
-
+// resolvers.Mutation.addDBTodo('ddd', true)
 export default resolvers
