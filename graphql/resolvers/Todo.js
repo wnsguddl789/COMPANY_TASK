@@ -12,7 +12,7 @@ const resolvers = {
 		},
 	},
 	Mutation: {
-		addTodo: (_, { id, value, isComplete }) => {
+		addTodo: (_, { value, isComplete }) => {
 			const newTodo = {
 				id,
 				value,
@@ -34,18 +34,37 @@ const resolvers = {
 					else console.log(err)
 				})
 				await session.commitTransaction()
-				// Todo.console.log(newTodo)
 			} catch (error) {
-				// console.log(error)
 				throw error
 			} finally {
 				await session.endSession()
 			}
-
-			// Todo.push(newTodo)
 		},
-		removeTodo: (_, {}) => {},
-		completeTodo: (_, {}) => {},
+		removeDBTodo: async (_, { id }) => {
+			const session = await startSession()
+			try {
+				session.startTransaction()
+				await Todo.deleteOne({ id })
+				await session.commitTransaction()
+			} catch (error) {
+				throw error
+			} finally {
+				await session.endSession()
+			}
+		},
+		completeDBTodo: async (_, { id }) => {
+			const session = await startSession()
+			try {
+				session.startTransaction()
+				const res = await Todo.update({ _id: id }, { isComplete: true })
+				// Todo.updateOne({ _id: id }, { $set: { isComplete: true } })
+				await session.commitTransaction()
+			} catch (error) {
+				throw error
+			} finally {
+				await session.endSession()
+			}
+		},
 	},
 	Subscription: {
 		newTodo: {
@@ -53,5 +72,4 @@ const resolvers = {
 		},
 	},
 }
-// resolvers.Mutation.addDBTodo('ddd', true)
 export default resolvers

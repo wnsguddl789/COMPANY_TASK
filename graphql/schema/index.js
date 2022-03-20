@@ -15,13 +15,12 @@ const typeDefs = gql`
 		getDBTodoList: [DBTodo]!
 	}
 	type Mutation {
-		addTodo(value: String!, isComplete: Boolean!): Todo
+		addTodo(addTodoInput: AddTodoInput): Todo
 		addDBTodo(value: String!, isComplete: Boolean!): DBTodo
-		removeTodo(id: Int!): String!
-		completeTodo(id: Int!, value: String!, isComplete: Boolean!): String!
+		removeDBTodo(id: String!): DBTodo
+		completeDBTodo(id: String!): DBTodo
 	}
 	input AddTodoInput {
-		id: Int!
 		value: String!
 		isComplete: Boolean!
 	}
