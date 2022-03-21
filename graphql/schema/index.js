@@ -1,31 +1,28 @@
-import { gql } from 'apollo-server'
+import { gql } from 'apollo-server';
 
 const typeDefs = gql`
-	type Todo {
-		value: String!
-		isComplete: Boolean!
-	}
 	type DBTodo {
-		id: String!
+		_id: String!
 		value: String!
 		isComplete: Boolean!
 	}
 	type Query {
-		getTodoList: [Todo]!
 		getDBTodoList: [DBTodo]!
+		getNotComplete: [DBTodo]!
+		getComplete: [DBTodo]!
+		getTodoOne: [DBTodo]!
 	}
 	type Mutation {
-		addTodo(addTodoInput: AddTodoInput): Todo
 		addDBTodo(value: String!, isComplete: Boolean!): DBTodo
-		removeDBTodo(id: String!): DBTodo
-		completeDBTodo(id: String!): DBTodo
+		removeDBTodo(_id: String!): DBTodo
+		completeDBTodo(_id: String!): DBTodo
 	}
 	input AddTodoInput {
 		value: String!
 		isComplete: Boolean!
 	}
 	type Subscription {
-		newTodo: Todo
+		todoAdded: String
 	}
-`
-export default typeDefs
+`;
+export default typeDefs;

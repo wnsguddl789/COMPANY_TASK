@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const todoSchema = new mongoose.Schema({
 	value: {
@@ -9,8 +9,8 @@ const todoSchema = new mongoose.Schema({
 		type: Boolean,
 		required: true,
 	},
-})
+});
 
-const Todo = mongoose.models.Todo || mongoose.model('Todo', todoSchema)
+const Todo = mongoose.models.Todo || mongoose.model('Todo', todoSchema);
 
-export default Todo
+export default Todo;
