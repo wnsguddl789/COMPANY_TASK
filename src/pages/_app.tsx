@@ -1,5 +1,6 @@
 import * as React from 'react';
 import App from 'next/app';
+import '../styles/reset.css';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
