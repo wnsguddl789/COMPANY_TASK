@@ -1,13 +1,15 @@
 import SignInModel from './models/SignInModel';
 
 export default class RootStore {
+  signInModel: SignInModel;
+
   static type = {
-    // SIGNIN_MODEL : 'signInModel'
+    SIGNIN_MODEL: 'signInModel',
   };
   constructor() {
-    // this.signInModel = new SignInModel(RootStore.type.SIGNIN_MODEL))
+    this.signInModel = new SignInModel(RootStore.type.SIGNIN_MODEL);
   }
-  getStore = () => {
-    // [RootStore.type.SIGNIN_MODEL] : this.signInModel
-  };
+  getStore = () => ({
+    [RootStore.type.SIGNIN_MODEL]: this.signInModel,
+  });
 }

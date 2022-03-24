@@ -1,5 +1,12 @@
 import * as React from 'react';
+import { observable, action, makeObservable } from 'mobx';
 
 export default class SignInModel {
-  constructor() {}
+  isSignedIn: false;
+
+  constructor() {
+    makeObservable(this, {
+      isSignedIn: observable,
+    });
+  }
 }
